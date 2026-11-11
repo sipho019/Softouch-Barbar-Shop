@@ -11,7 +11,9 @@ menuToggle.addEventListener('click', function () {
   nav.classList.toggle('open');
 });
 
-// ============ HEADER SHADOW ON SCROLL ============
+// ============ STICKY HEADER SHADOW ON SCROLL ============
+// The header stays at the top because of position: fixed in the CSS.
+// Here we only add a shadow once the page is scrolled down a little.
 window.addEventListener('scroll', function () {
   if (window.scrollY > 50) {
     header.classList.add('scrolled');
@@ -24,10 +26,75 @@ window.addEventListener('scroll', function () {
 // Every page has <span id="year">, so this is safe everywhere.
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// ============ GALLERY LIGHTBOX (gallery.html only) ============
+// querySelectorAll returns a list of every element matching the selector.
+// On pages without a gallery the list is empty, so we check its length first.
+const galleryItems = document.querySelectorAll('.gallery figure');
+
+if (galleryItems.length > 0) {
+  // Build the lightbox with JavaScript so we don't need to touch the HTML.
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox';
+  lightbox.innerHTML =
+    '<button class="lightbox-close" aria-label="Close">&times;</button>' +
+    '<button class="lightbox-prev" aria-label="Previous photo">&#10094;</button>' +
+    '<img src="" alt="">' +
+    '<button class="lightbox-next" aria-label="Next photo">&#10095;</button>';
+  document.body.appendChild(lightbox); // add it to the end of the page
+
+  const lightboxImg = lightbox.querySelector('img');
+  let current = 0; // index (position) of the photo being shown
+
+  // Shows the photo at a given position in the list.
+  function showPhoto(index) {
+    // The % (remainder) trick wraps around: after the last photo comes the first,
+    // and before the first photo comes the last.
+    current = (index + galleryItems.length) % galleryItems.length;
+    const img = galleryItems[current].querySelector('img');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');            // CSS .lightbox.open makes it visible
+    document.body.style.overflow = 'hidden';   // stops the page scrolling behind it
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';         // allow scrolling again
+  }
+
+  // forEach runs the function for every photo; "i" is its position in the list.
+  galleryItems.forEach(function (item, i) {
+    item.addEventListener('click', function () {
+      showPhoto(i);
+    });
+  });
+
+  // Buttons
+  lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.querySelector('.lightbox-prev').addEventListener('click', function () { showPhoto(current - 1); });
+  lightbox.querySelector('.lightbox-next').addEventListener('click', function () { showPhoto(current + 1); });
+
+  // Clicking the dark area around the photo closes it.
+  // event.target is the exact element clicked; we only close if it was the backdrop.
+  lightbox.addEventListener('click', function (event) {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard: Escape closes, arrow keys move between photos.
+  document.addEventListener('keydown', function (event) {
+    if (!lightbox.classList.contains('open')) return; // ignore keys when it's closed
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') showPhoto(current - 1);
+    if (event.key === 'ArrowRight') showPhoto(current + 1);
+  });
+}
+
 // ============ BOOKING FORM (booking.html only) ============
-// This one script file is shared by all pages, but the form only exists
-// on booking.html. On other pages getElementById returns null, and
-// using null would cause an error. So we check "if (form)" first.
+// This script is shared by all pages, but the form only exists on booking.html.
+// On other pages getElementById returns null, and using null causes an error,
+// so we check "if (form)" first.
 const form = document.getElementById('bookingForm');
 
 if (form) {

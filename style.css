@@ -232,3 +232,32 @@ h2 { font-size: 2.4rem; margin-bottom: 1rem; }
   .about-grid { gap: 2rem; }
   .section { padding: 3.5rem 0; }
 }
+/* ============ LIGHTBOX (gallery photo viewer) ============ */
+.gallery figure { cursor: pointer; }   /* shows the hand cursor over photos */
+
+.lightbox {
+  position: fixed;
+  inset: 0;                            /* shorthand for top/right/bottom/left = 0, covers the whole screen */
+  background: rgba(5, 5, 20, 0.92);
+  display: none;                       /* hidden until JS adds the "open" class */
+  align-items: center;
+  justify-content: center;
+  z-index: 300;                        /* above the header (z-index 100) */
+}
+.lightbox.open { display: flex; }
+
+.lightbox img { max-width: 85%; max-height: 85vh; border-radius: var(--radius); }
+
+.lightbox button {
+  position: absolute;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 1rem;
+}
+.lightbox-close { top: 1rem; right: 1.5rem; font-size: 2.5rem !important; }
+.lightbox-prev { left: 0.5rem; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 0.5rem; top: 50%; transform: translateY(-50%); }
+.lightbox button:hover { color: var(--blue-bright); }
