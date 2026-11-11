@@ -351,6 +351,7 @@ h2 { font-size: 2.4rem; margin-bottom: 1rem; }
   .about-hero-photo img { height: 320px; }
   .about-story-grid, .feature-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-frame { margin-left: 24px; }   /* makes space for the offset blue frame */
+  
   .about-frame img { height: 340px; }
 }
 /* ============ CARDS ============ */
