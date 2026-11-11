@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoftTouch Barber Shop | Superior Haircuts in Mthatha</title>
+  <meta name="description" content="SoftTouch Barber Shop on Nelson Mandela Drive, Mthatha - superior haircuts, beard trims and shaves. Call 067 056 7332.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER: identical on every page. Only class="active" moves.
+       Each link now points to a separate file instead of a #section. -->
+  <header class="header" id="header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="SoftTouch Barber Shop logo">
+        <span>SoftTouch</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="booking.html" class="btn btn-small">Book Now</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: only the home page has this big full-screen section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">Mthatha's Barber Shop</p>
+        <h1>Look Sharp. <br>Feel <span class="accent">Smooth.</span></h1>
+        <p class="hero-text">The only barbershop around Mthatha that provides superior haircuts, delivered with a soft touch.</p>
+        <div class="hero-buttons">
+          <a href="booking.html" class="btn">Book Appointment</a>
+          <a href="services.html" class="btn btn-outline">View Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHORT PREVIEW of what we offer, with a link to the full Services page -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What We Do</p>
+          <h2>Superior Cuts, Every Time</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Haircuts &amp; Fades</h3>
+            <p>Clean, tailored cuts and sharp fades finished with neat styling.</p>
+          </article>
+          <article class="card">
+            <h3>Beard Care</h3>
+            <p>Shaped and trimmed for a defined, tidy beard.</p>
+          </article>
+          <article class="card">
+            <h3>Hot Towel Shave</h3>
+            <p>A relaxing traditional straight-razor shave.</p>
+          </article>
+        </div>
+        <p class="center-btn"><a href="services.html" class="btn btn-outline">See All Services &amp; Prices</a></p>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION band -->
+    <section class="cta">
+      <div class="container">
+        <h2>Ready for a Fresh Cut?</h2>
+        <p>Book online or call us on <a class="phone-link" href="tel:+27670567332">067 056 7332</a>.</p>
+        <a href="booking.html" class="btn">Book Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> SoftTouch Barber Shop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
