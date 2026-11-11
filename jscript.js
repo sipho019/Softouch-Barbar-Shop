@@ -158,3 +158,34 @@ if (form) {
     }
   });
 }
+// ============ HEADING DRIFTS LEFT AS YOU SCROLL ============
+const driftHeadings = document.querySelectorAll('.drift-left');
+const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (driftHeadings.length > 0 && !noMotion) {
+
+  function updateDrift() {
+    // Smaller travel distance on phones so the text isn't clipped
+    const distance = window.innerWidth < 800 ? 60 : 200;
+
+    driftHeadings.forEach(function (heading) {
+      // getBoundingClientRect().top = distance from the top of the screen to the heading
+      const top = heading.getBoundingClientRect().top;
+
+      // progress: 0 = heading just entering at the bottom, 1 = leaving at the top.
+      // 0.5 means it's halfway up the screen.
+      const progress = 1 - top / window.innerHeight;
+
+      // At 0.5 the shift is 0, so the heading sits centered.
+      // Below that it's pushed right, above that it moves left.
+      const shift = (0.5 - progress) * distance;
+
+      heading.style.transform = 'translateX(' + shift + 'px)';
+    });
+  }
+
+  // { passive: true } tells the browser this listener won't block scrolling
+  window.addEventListener('scroll', updateDrift, { passive: true });
+  window.addEventListener('resize', updateDrift);
+  updateDrift();   // run once on load to set the starting position
+}
