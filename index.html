@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SoftTouch Barber Shop | Superior Haircuts in Mthatha</title>
-  <meta name="description" content="SoftTouch Barber Shop on Nelson Mandela Drive, Mthatha - superior haircuts, beard trims and shaves. Call 067 056 7332.">
+  <title>Softouch Barbershop | Superior Haircuts in Mthatha</title>
+  <meta name="description" content="Softouch Barbershop on Nelson Mandela Drive, Mthatha - superior haircuts, beard trims, shaves and PlayStation gaming. Call 067 056 7332.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HEADER: identical on every page. Only class="active" moves.
-       Each link now points to a separate file instead of a #section. -->
+  <!-- HEADER: the logo image already contains the shop name, so no extra text beside it.
+       The new Gaming link points to gaming.html. -->
   <header class="header" id="header">
     <div class="container nav-wrap">
       <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="SoftTouch Barber Shop logo">
-        <span>SoftTouch</span>
+        <img src="images/logo.png" alt="Softouch Barbershop logo">
       </a>
       <nav class="nav" id="nav">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
+        <a href="gaming.html">Gaming</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
         <a href="booking.html" class="btn btn-small">Book Now</a>
@@ -34,10 +34,10 @@
   </header>
 
   <main>
-    <!-- HERO: only the home page has this big full-screen section -->
+    <!-- HERO: black overlay with white text -->
     <section class="hero">
       <div class="container hero-content">
-        <p class="eyebrow">Mthatha's Barber Shop</p>
+        <p class="eyebrow">Mthatha's Barbershop</p>
         <h1>Look Sharp. <br>Feel <span class="accent">Smooth.</span></h1>
         <p class="hero-text">The only barbershop around Mthatha that provides superior haircuts, delivered with a soft touch.</p>
         <div class="hero-buttons">
@@ -47,7 +47,7 @@
       </div>
     </section>
 
-    <!-- SHORT PREVIEW of what we offer, with a link to the full Services page -->
+    <!-- SERVICES PREVIEW (white section) -->
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -72,7 +72,22 @@
       </div>
     </section>
 
-    <!-- CALL TO ACTION band -->
+    <!-- GAMING TEASER (black section). Reuses the two-column .about-grid layout. -->
+    <section class="section section-dark">
+      <div class="container about-grid">
+        <div class="about-image">
+          <img src="images/gaming.jpg" alt="PlayStation gaming at Softouch Barbershop">
+        </div>
+        <div class="about-text">
+          <p class="eyebrow">More Than a Haircut</p>
+          <h2>PlayStation Gaming</h2>
+          <p>Softouch is not only about sharp cuts. Come in for a haircut and enjoy PlayStation gaming too.</p>
+          <a href="gaming.html" class="btn">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION (blue band) -->
     <section class="cta">
       <div class="container">
         <h2>Ready for a Fresh Cut?</h2>
@@ -84,7 +99,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> SoftTouch Barber Shop. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Softouch Barbershop. All rights reserved.</p>
     </div>
   </footer>
 

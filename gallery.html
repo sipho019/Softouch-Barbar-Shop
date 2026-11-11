@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery | SoftTouch Barber Shop Mthatha</title>
-  <meta name="description" content="See our haircuts, fades and beard work at SoftTouch Barber Shop, Mthatha.">
+  <title>Gallery | Softouch Barbershop Mthatha</title>
+  <meta name="description" content="See our haircuts, fades and tapers at Softouch Barbershop, Mthatha.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -14,13 +14,13 @@
   <header class="header" id="header">
     <div class="container nav-wrap">
       <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="SoftTouch Barber Shop logo">
-        <span>SoftTouch</span>
+        <img src="images/logo.png" alt="Softouch Barbershop logo">
       </a>
       <nav class="nav" id="nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
+        <a href="gaming.html">Gaming</a>
         <a href="gallery.html" class="active">Gallery</a>
         <a href="contact.html">Contact</a>
         <a href="booking.html" class="btn btn-small">Book Now</a>
@@ -42,21 +42,91 @@
     <section class="section">
       <div class="container">
         <div class="gallery">
-          <!-- Add your own photos as gallery1.jpg ... gallery6.jpg -->
-          <img src="images/gallery1.jpg" alt="Fresh fade haircut">
-          <img src="images/gallery2.jpg" alt="Beard trim">
-          <img src="images/gallery3.jpg" alt="Classic cut">
-          <img src="images/gallery4.jpg" alt="Line-up detail">
-          <img src="images/gallery5.jpg" alt="Hot towel shave">
-          <img src="images/gallery6.jpg" alt="Barber shop interior">
+          <!-- Each photo is a <figure>: an image plus a <figcaption> (the label on top of it).
+               loading="lazy" makes the browser load photos only as you scroll to them,
+               which keeps the page fast with this many images.
+               The captions are guessed from your file names, so edit them to match. -->
+          <figure>
+            <img src="images/taperfade.jpg" alt="Taper fade haircut" loading="lazy">
+            <figcaption>Taper Fade</figcaption>
+          </figure>
+          <figure>
+            <img src="images/tapefade.jpg" alt="Taper fade haircut" loading="lazy">
+            <figcaption>Taper Fade</figcaption>
+          </figure>
+          <figure>
+            <img src="images/tapercut.jpg" alt="Taper cut" loading="lazy">
+            <figcaption>Taper Cut</figcaption>
+          </figure>
+          <figure>
+            <img src="images/brushcut.jpg" alt="Brush cut" loading="lazy">
+            <figcaption>Brush Cut</figcaption>
+          </figure>
+          <figure>
+            <img src="images/brush.jpg" alt="Brush style haircut" loading="lazy">
+            <figcaption>Brush Style</figcaption>
+          </figure>
+          <figure>
+            <img src="images/blond.jpg" alt="Blond haircut" loading="lazy">
+            <figcaption>Blond Cut</figcaption>
+          </figure>
+          <figure>
+            <img src="images/tintcut.jpg" alt="Tint cut" loading="lazy">
+            <figcaption>Tint Cut</figcaption>
+          </figure>
+          <figure>
+            <img src="images/clothfade.jpg" alt="Fade haircut" loading="lazy">
+            <figcaption>Fade</figcaption>
+          </figure>
+          <figure>
+            <img src="images/clothingfade.jpg" alt="Fade haircut" loading="lazy">
+            <figcaption>Fade</figcaption>
+          </figure>
+          <figure>
+            <img src="images/smilef.jpg" alt="Fresh fade haircut" loading="lazy">
+            <figcaption>Fresh Fade</figcaption>
+          </figure>
+          <figure>
+            <img src="images/childfade.jpg" alt="Kids fade haircut" loading="lazy">
+            <figcaption>Kids Fade</figcaption>
+          </figure>
+          <figure>
+            <img src="images/sonfade.jpg" alt="Kids fade haircut" loading="lazy">
+            <figcaption>Kids Fade</figcaption>
+          </figure>
+          <figure>
+            <img src="images/clean.jpg" alt="Clean haircut" loading="lazy">
+            <figcaption>Clean Cut</figcaption>
+          </figure>
+          <figure>
+            <img src="images/cut.jpg" alt="Fresh haircut" loading="lazy">
+            <figcaption>Fresh Cut</figcaption>
+          </figure>
+          <figure>
+            <img src="images/riz.jpg" alt="Fresh haircut" loading="lazy">
+            <figcaption>Fresh Cut</figcaption>
+          </figure>
+          <figure>
+            <img src="images/client.jpg" alt="Happy client" loading="lazy">
+            <figcaption>Happy Client</figcaption>
+          </figure>
+          <figure>
+            <img src="images/clientimage.jpg" alt="Happy client" loading="lazy">
+            <figcaption>Happy Client</figcaption>
+          </figure>
+          <figure>
+            <img src="images/employe.jpg" alt="Softouch barber" loading="lazy">
+            <figcaption>Our Barber</figcaption>
+          </figure>
         </div>
+        <p class="center-btn"><a href="booking.html" class="btn">Book Your Cut</a></p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> SoftTouch Barber Shop. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Softouch Barbershop. All rights reserved.</p>
     </div>
   </footer>
 

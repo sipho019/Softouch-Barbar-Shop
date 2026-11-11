@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book an Appointment | SoftTouch Barber Shop Mthatha</title>
-  <meta name="description" content="Book your haircut at SoftTouch Barber Shop, Nelson Mandela Drive, Mthatha.">
+  <title>Book an Appointment | Softouch Barbershop Mthatha</title>
+  <meta name="description" content="Book your haircut or gaming session at Softouch Barbershop, Nelson Mandela Drive, Mthatha.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -14,16 +14,16 @@
   <header class="header" id="header">
     <div class="container nav-wrap">
       <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="SoftTouch Barber Shop logo">
-        <span>SoftTouch</span>
+        <img src="images/logo.png" alt="Softouch Barbershop logo">
       </a>
       <nav class="nav" id="nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
+        <a href="gaming.html">Gaming</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
-        <a href="booking.html" class="btn btn-small active">Book Now</a>
+        <a href="booking.html" class="btn btn-small">Book Now</a>
       </nav>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -41,7 +41,6 @@
 
     <section class="section">
       <div class="container booking-wrap">
-        <!-- novalidate: we validate with our own JavaScript -->
         <form class="form" id="bookingForm" novalidate>
           <div class="form-row">
             <div class="field">
@@ -66,6 +65,8 @@
                 <option>Hot Towel Shave</option>
                 <option>Kids Cut</option>
                 <option>Cut &amp; Beard Combo</option>
+                <!-- New option for the gaming service -->
+                <option>PlayStation Gaming</option>
               </select>
               <small class="error" id="serviceError"></small>
             </div>
@@ -84,7 +85,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> SoftTouch Barber Shop. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Softouch Barbershop. All rights reserved.</p>
     </div>
   </footer>
 
