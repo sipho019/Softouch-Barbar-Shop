@@ -144,6 +144,58 @@ h2 { font-size: 2.4rem; margin-bottom: 1rem; }
 .cta .btn { background: var(--white); color: var(--blue); border-color: var(--white); }
 .cta .btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
 
+/* ============ HOME PAGE ANIMATIONS ============ */
+
+/* Hero text: each item slides up in turn.
+   "both" holds the hidden start state during the delay. */
+@keyframes heroUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content > * { animation: heroUp 0.9s ease both; }
+.hero-content > :nth-child(1) { animation-delay: 0.2s; }   /* eyebrow */
+.hero-content > :nth-child(2) { animation-delay: 0.4s; }   /* heading */
+.hero-content > :nth-child(3) { animation-delay: 0.6s; }   /* paragraph */
+.hero-content > :nth-child(4) { animation-delay: 0.8s; }   /* buttons */
+
+/* Shimmer: the blue gradient slides across the word "Smooth." */
+@keyframes shimmer { to { background-position: 200% center; } }
+.hero h1 .accent {
+  background: linear-gradient(90deg, var(--blue-bright), var(--white), var(--blue-bright));
+  background-size: 200% auto;
+  -webkit-background-clip: text;          /* clips the gradient to the letter shapes */
+  background-clip: text;
+  -webkit-text-fill-color: transparent;   /* makes the text itself see-through so the gradient shows */
+  animation: shimmer 4s linear infinite;
+}
+
+/* Bouncing scroll arrow at the bottom of the hero */
+.hero { position: relative; }             /* so the arrow can be placed inside it */
+.scroll-down {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  margin-left: -1rem;                     /* half of the arrow's width, to center it */
+  color: var(--white);
+  font-size: 2.2rem;
+  line-height: 1;
+  opacity: 0.8;
+  animation: bounce 1.8s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(12px); }
+}
+
+/* Button lift on hover (all buttons on the site) */
+.btn { transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+.btn:hover { transform: translateY(-3px); }
+
+/* Gaming photo zooms slightly when hovered (the box clips it) */
+.about-image { overflow: hidden; border-radius: var(--radius); }
+.about-image img { transition: transform 0.6s ease; }
+.about-image:hover img { transform: scale(1.05); }
+
 /* ============ ABOUT PAGE ============ */
 
 /* 1. Split opening: two equal halves side by side */

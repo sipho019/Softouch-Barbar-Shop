@@ -11,12 +11,10 @@
 </head>
 <body>
 
-  <!-- HEADER: the logo image already contains the shop name, so no extra text beside it.
-       The new Gaming link points to gaming.html. -->
   <header class="header" id="header">
     <div class="container nav-wrap">
       <a href="index.html" class="logo">
-        <img src="./images/logo.png" alt="Softouch Barbershop logo">
+        <img src="images/logo.png" alt="Softouch Barbershop logo">
       </a>
       <nav class="nav" id="nav">
         <a href="index.html" class="active">Home</a>
@@ -34,7 +32,7 @@
   </header>
 
   <main>
-    <!-- HERO: black overlay with white text -->
+    <!-- HERO: the children of .hero-content animate in one after another (CSS only) -->
     <section class="hero">
       <div class="container hero-content">
         <p class="eyebrow">Mthatha's Barbershop</p>
@@ -45,40 +43,49 @@
           <a href="services.html" class="btn btn-outline">View Services</a>
         </div>
       </div>
+      <!-- Bouncing arrow. href="#home-services" jumps to the section below. -->
+      <a href="#home-services" class="scroll-down" aria-label="Scroll down">&#8964;</a>
     </section>
 
-    <!-- SERVICES PREVIEW (white section) -->
-    <section class="section">
+    <!-- SERVICES PREVIEW. Each card sits inside a "reveal" wrapper so the
+         pop-in animation doesn't interfere with the card's hover effect. -->
+    <section class="section" id="home-services">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="eyebrow">What We Do</p>
           <h2>Superior Cuts, Every Time</h2>
         </div>
         <div class="cards">
-          <article class="card">
-            <h3>Haircuts &amp; Fades</h3>
-            <p>Clean, tailored cuts and sharp fades finished with neat styling.</p>
-          </article>
-          <article class="card">
-            <h3>Beard Care</h3>
-            <p>Shaped and trimmed for a defined, tidy beard.</p>
-          </article>
-          <article class="card">
-            <h3>Hot Towel Shave</h3>
-            <p>A relaxing traditional straight-razor shave.</p>
-          </article>
+          <div class="reveal" style="--delay: 0s">
+            <article class="card">
+              <h3>Haircuts &amp; Fades</h3>
+              <p>Clean, tailored cuts and sharp fades finished with neat styling.</p>
+            </article>
+          </div>
+          <div class="reveal" style="--delay: 0.15s">
+            <article class="card">
+              <h3>Beard Care</h3>
+              <p>Shaped and trimmed for a defined, tidy beard.</p>
+            </article>
+          </div>
+          <div class="reveal" style="--delay: 0.3s">
+            <article class="card">
+              <h3>Hot Towel Shave</h3>
+              <p>A relaxing traditional straight-razor shave.</p>
+            </article>
+          </div>
         </div>
-        <p class="center-btn"><a href="services.html" class="btn btn-outline">See All Services &amp; Prices</a></p>
+        <p class="center-btn reveal"><a href="services.html" class="btn btn-outline">See All Services &amp; Prices</a></p>
       </div>
     </section>
 
-    <!-- GAMING TEASER (black section). Reuses the two-column .about-grid layout. -->
+    <!-- GAMING TEASER: photo slides in from the left, text from the right -->
     <section class="section section-dark">
       <div class="container about-grid">
-        <div class="about-image">
-          <img src="./images/gaming.png" alt="PlayStation gaming at Softouch Barbershop">
+        <div class="about-image reveal reveal-left">
+          <img src="images/gaming.jpg" alt="PlayStation gaming at Softouch Barbershop">
         </div>
-        <div class="about-text">
+        <div class="about-text reveal reveal-right">
           <p class="eyebrow">More Than a Haircut</p>
           <h2>PlayStation Gaming</h2>
           <p>Softouch is not only about sharp cuts. Come in for a haircut and enjoy PlayStation gaming too.</p>
@@ -87,9 +94,9 @@
       </div>
     </section>
 
-    <!-- CALL TO ACTION (blue band) -->
+    <!-- CALL TO ACTION -->
     <section class="cta">
-      <div class="container">
+      <div class="container reveal">
         <h2>Ready for a Fresh Cut?</h2>
         <p>Book online or call us on <a class="phone-link" href="tel:+27670567332">067 056 7332</a>.</p>
         <a href="booking.html" class="btn">Book Now</a>
