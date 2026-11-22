@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book an Appointment | Softouch Barbershop Mthatha</title>
-  <meta name="description" content="Book your haircut or gaming session at Softouch Barbershop, Nelson Mandela Drive, Mthatha.">
+  <meta name="description" content="Request a booking at Softouch Barbershop, Nelson Mandela Drive, Mthatha, through WhatsApp.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -40,16 +40,23 @@
 
     <section class="section">
       <div class="container booking-wrap">
+
+        <!-- Honest explanation shown ABOVE the form -->
+        <p class="form-note">Fill in the form and press the button. WhatsApp opens with your request already written. Your booking is only a request until we reply to confirm it.</p>
+
+        <!-- novalidate: our own JavaScript does the checking.
+             maxlength limits how much can be typed.
+             autocomplete lets phones fill in the name and number. -->
         <form class="form" id="bookingForm" novalidate>
           <div class="form-row">
             <div class="field">
               <label for="name">Full Name</label>
-              <input type="text" id="name" placeholder="John Smith">
+              <input type="text" id="name" maxlength="60" autocomplete="name" placeholder="Your name">
               <small class="error" id="nameError"></small>
             </div>
             <div class="field">
               <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" placeholder="067 123 4567">
+              <input type="tel" id="phone" maxlength="15" autocomplete="tel" placeholder="e.g. 067 123 4567">
               <small class="error" id="phoneError"></small>
             </div>
           </div>
@@ -58,14 +65,14 @@
               <label for="service">Service</label>
               <select id="service">
                 <option value="">Choose a service</option>
-                <option>Classic Haircut</option>
-                <option>Fade &amp; Design</option>
-                <option>Beard Trim</option>
-                <option>Hot Towel Shave</option>
+                <option>Sharp Fade</option>
+                <option>High Taper</option>
+                <option>Brush Cut</option>
                 <option>Kids Cut</option>
-                <option>Cut &amp; Beard Combo</option>
-                <!-- New option for the gaming service -->
-                <option>PlayStation Gaming</option>
+                <option>Bleach</option>
+                <option>Tints</option>
+                <option>Hair Dye</option>
+                <option>Waves &amp; Custom Styling</option>
               </select>
               <small class="error" id="serviceError"></small>
             </div>
@@ -75,9 +82,11 @@
               <small class="error" id="dateError"></small>
             </div>
           </div>
-          <button type="submit" class="btn">Request Booking</button>
-          <p class="form-success" id="formSuccess"></p>
+          <button type="submit" class="btn">Send Request on WhatsApp</button>
+          <p class="form-success" id="formSuccess" role="status"></p>
         </form>
+
+        <p class="form-note">Prefer to call? Phone us on <a class="phone-link" href="tel:+27670567332">067 056 7332</a>.</p>
       </div>
     </section>
   </main>

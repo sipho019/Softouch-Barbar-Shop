@@ -86,6 +86,11 @@ if (galleryItems.length > 0) {
 }
 
 // ============ BOOKING FORM (booking.html only) ============
+// The shop's WhatsApp number in international format: no +, no spaces, no leading 0.
+// 067 056 7332 becomes 27670567332 (27 is South Africa's country code).
+// CHANGE THIS LINE if the shop uses a different WhatsApp number.
+const SHOP_WHATSAPP = '27670567332';
+
 // On other pages getElementById returns null, so we check "if (form)" first.
 const form = document.getElementById('bookingForm');
 
@@ -93,8 +98,13 @@ if (form) {
   const successMessage = document.getElementById('formSuccess');
   const dateInput = document.getElementById('date');
 
-  // Stop people choosing a date in the past
-  dateInput.min = new Date().toISOString().slice(0, 10);
+  // Earliest date = today. Latest date = 60 days from now.
+  // toISOString() gives "2026-11-22T..."; slice(0, 10) keeps "2026-11-22".
+  const today = new Date();
+  const latest = new Date();
+  latest.setDate(today.getDate() + 60);
+  dateInput.min = today.toISOString().slice(0, 10);
+  dateInput.max = latest.toISOString().slice(0, 10);
 
   // Shows or clears the error message under one field
   function setError(fieldId, message) {
@@ -105,33 +115,64 @@ if (form) {
   form.addEventListener('submit', function (event) {
     event.preventDefault(); // stop the page reloading
 
-    const name = document.getElementById('name').value.trim();
+    // .trim() removes spaces at the start and end.
+    // .replace(/\s+/g, ' ') turns any run of spaces or line breaks into one space.
+    const name = document.getElementById('name').value.trim().replace(/\s+/g, ' ');
     const phone = document.getElementById('phone').value.trim();
     const service = document.getElementById('service').value;
     const date = dateInput.value;
 
     let valid = true;
 
+    // Name: 2 to 60 characters
     if (name.length < 2) { setError('name', 'Please enter your name.'); valid = false; }
     else { setError('name', ''); }
 
-    // Regular expression: 9 to 15 characters, only digits, spaces or +
+    // Phone: only digits, spaces or +, between 9 and 15 characters
     if (!/^[0-9 +]{9,15}$/.test(phone)) { setError('phone', 'Enter a valid phone number.'); valid = false; }
     else { setError('phone', ''); }
 
     if (service === '') { setError('service', 'Please choose a service.'); valid = false; }
     else { setError('service', ''); }
 
-    if (date === '') { setError('date', 'Please pick a date.'); valid = false; }
-    else { setError('date', ''); }
+    // Date: must be filled in and inside the allowed range
+    if (date === '' || date < dateInput.min || date > dateInput.max) {
+      setError('date', 'Please pick a date within the next 60 days.');
+      valid = false;
+    } else { setError('date', ''); }
 
-    // A real booking needs a backend or messaging link to receive this
-    if (valid) {
-      successMessage.textContent = 'Thank you, ' + name + '! We will contact you to confirm your ' + service + '.';
-      form.reset();
-    } else {
+    // Stop here if anything failed
+    if (!valid) {
       successMessage.textContent = '';
+      return;
     }
+
+    // Turn "2026-11-25" into "Wednesday, 25 November 2026".
+    // Adding "T00:00:00" makes the browser read it as a local date, not UTC.
+    const niceDate = new Date(date + 'T00:00:00').toLocaleDateString('en-ZA', {
+      weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+    });
+
+    // The message the customer will send. \n is a line break.
+    const message =
+      'Hello Softouch Barbershop, I would like to book.\n\n' +
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n' +
+      'Service: ' + service + '\n' +
+      'Preferred date: ' + niceDate + '\n\n' +
+      'Please confirm availability. Thank you.';
+
+    // encodeURIComponent makes the text safe inside a web address
+    // (spaces become %20, line breaks become %0A).
+    const url = 'https://wa.me/' + SHOP_WHATSAPP + '?text=' + encodeURIComponent(message);
+
+    // Open WhatsApp in a new tab. 'noopener' stops that tab from controlling this one.
+    window.open(url, '_blank', 'noopener');
+
+    // textContent (not innerHTML) writes plain text, so a name like "<script>" can never run as code
+    successMessage.textContent =
+      'WhatsApp is opening. Press Send there to submit your request. Your booking is confirmed only when we reply.';
+    form.reset();
   });
 }
 
