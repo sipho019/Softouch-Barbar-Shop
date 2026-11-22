@@ -820,3 +820,13 @@ h2 { font-size: 2.4rem; margin-bottom: 1rem; }
   .game-hero-photo img { height: 300px; }
   .game-hero::before { width: 350px; height: 350px; }
 }
+/* ============ LEGAL PAGES (privacy policy) ============ */
+.legal { max-width: 760px; }                    /* narrow column: long text is easier to read */
+.legal h2 { font-size: 1.5rem; margin: 2.2rem 0 0.6rem; }
+.legal p { color: var(--muted); margin-bottom: 1rem; }
+.legal strong { color: var(--text); }
+.legal-date { font-size: 0.85rem; color: var(--blue); font-weight: 600; }
+
+/* Privacy link in the footer */
+.footer a { color: var(--blue-bright); text-decoration: underline; }
+.footer a:hover { color: var(--white); }
