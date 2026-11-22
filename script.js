@@ -1,13 +1,22 @@
 // ============ GRAB ELEMENTS (header exists on every page) ============
+// ============ GRAB ELEMENTS (header exists on every page) ============
 const header = document.getElementById('header');
 const nav = document.getElementById('nav');
 const menuToggle = document.getElementById('menuToggle');
 
 // ============ MOBILE MENU ============
-// Clicking the hamburger adds/removes the "open" class; the CSS
-// rule .nav.open { display: flex } then shows or hides the menu.
+// Clicking the three bars switches the "open" class on and off
 menuToggle.addEventListener('click', function () {
-  nav.classList.toggle('open');
+  nav.classList.toggle('open');          // shows or hides the menu panel
+  menuToggle.classList.toggle('open');   // turns the bars into an X
+});
+
+// Close the menu when one of its links is clicked
+nav.querySelectorAll('a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    nav.classList.remove('open');
+    menuToggle.classList.remove('open');
+  });
 });
 
 // ============ HEADER SHADOW ON SCROLL ============
