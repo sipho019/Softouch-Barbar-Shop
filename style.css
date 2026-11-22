@@ -170,55 +170,69 @@ h2 { font-size: 2.4rem; margin-bottom: 1rem; }
   .nav a:not(.btn) { padding: 0.6rem 0; }
 }
 
-/* ============ MOBILE MENU (JavaScript toggle) ============ */
-
-/* The button is hidden on wide screens */
-.menu-toggle { display: none; background: none; border: none; cursor: pointer; }
-
-.menu-toggle span {
-  display: block;
-  width: 26px;
-  height: 3px;
-  background: var(--black);
-  margin: 5px 0;
-  transition: 0.3s;
-}
-
+/* ============ MOBILE MENU: FINAL (glass panel, wins over older rules) ============ */
 @media (max-width: 800px) {
 
-  .menu-toggle { display: block; position: relative; z-index: 300; }
-
-  /* The nav panel: hidden until JavaScript adds the class "open" */
-  .nav {
-    display: none;
-    position: absolute;
-    top: 75px;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0 1.5rem;
-    background: #ffffff;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  /* ".header .nav" has higher specificity than a plain ".nav", so it wins any clash */
+  .header .nav {
+    display: none;                         /* hidden until JavaScript adds "open" */
+    position: absolute !important;
+    top: 83px !important;                  /* just under the 75px header */
+    left: 12px !important;
+    right: 12px !important;
+    bottom: auto !important;               /* stops the panel stretching to the screen bottom */
+    width: auto !important;
+    height: auto !important;               /* the panel is only as tall as its links */
+    min-height: 0 !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;/* links start at the top and stack with a small gap */
+    align-items: stretch !important;
+    gap: 0.5rem !important;
+    padding: 1rem !important;
+    border-radius: 18px !important;
+    background: rgba(11, 11, 40, 0.94) !important;   /* dark glass: 94% solid so text is always readable */
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
     z-index: 200;
   }
 
-  .nav.open { display: flex; }
+  /* Shown when JavaScript adds the class "open" */
+  .header .nav.open { display: flex !important; }
 
-  .nav a:not(.btn) {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 0.9rem 0;
-    color: #1a1a2e;
+  /* Each link: a white-text glass pill */
+  .header .nav a:not(.btn) {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0.95rem 1.2rem !important;
+    font-size: 1.02rem !important;
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    opacity: 1 !important;
   }
-  .nav a:not(.btn)::after { display: none; }
-  .nav .btn { margin-top: 1rem; }
 
-  /* The three bars turn into an X when "open" is on the button */
-  .menu-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-  .menu-toggle.open span:nth-child(2) { opacity: 0; }
-  .menu-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  /* Remove the desktop blue underline that was showing */
+  .header .nav a:not(.btn)::after { display: none !important; content: none !important; }
+
+  /* Current page: blue-tinted pill */
+  .header .nav a.active:not(.btn) {
+    background: rgba(43, 43, 208, 0.6) !important;
+    border-color: rgba(111, 124, 255, 0.8) !important;
+  }
+
+  /* Book Now: full-width blue button */
+  .header .nav .btn {
+    display: block !important;
+    width: 100% !important;
+    margin: 0.5rem 0 0 !important;
+    padding: 0.95rem 0 !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+  }
 }
 /* ============ HERO (black overlay, white text) ============ */
 .hero {
