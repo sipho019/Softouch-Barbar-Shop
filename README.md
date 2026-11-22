@@ -19,17 +19,6 @@ Softouch Barbershop is on Nelson Mandela Drive in the Mthatha CBD.
 **Facebook:** [Softouch Barbershop](https://www.facebook.com/p/Softouch-Barbershop-61555367192725/)
 **Instagram:** [@softouchbarbershop](https://www.instagram.com/softouchbarbershop/)
 
-## Pages
-
-| Page | File | What it shows |
-|---|---|---|
-| Home | `index.html` | Hero, services preview, gaming teaser, call to action |
-| About | `about.html` | Story, features, community and culture |
-| Services | `services.html` | Price board and the free PlayStation offer |
-| Gaming | `gaming.html` | How free PlayStation works, FIFA tournaments |
-| Gallery | `gallery.html` | Haircut photos with a full-size photo viewer |
-| Booking | `booking.html` | Appointment request form with validation |
-| Contact | `contact.html` | Address, phone, social links and opening hours |
 
 ## Features
 
@@ -48,8 +37,8 @@ softouch/
   about.html
   services.html
   gaming.html
-  gallery.html
   booking.html
+  privacy.html
   contact.html
   style.css      (all styling, shared by every page)
   script.js      (all behaviour, shared by every page)
