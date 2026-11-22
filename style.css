@@ -170,27 +170,83 @@ h2 { font-size: 2.4rem; margin-bottom: 1rem; }
   .nav a:not(.btn) { padding: 0.6rem 0; }
 }
 
-/* ============ MOBILE MENU: FINAL (glass panel, wins over older rules) ============ */
+/* ============ MOBILE MENU: FINAL (glass panel + hover toggle) ============ */
 @media (max-width: 800px) {
 
-  /* ".header .nav" has higher specificity than a plain ".nav", so it wins any clash */
+  /* ---------- TOGGLE BUTTON ---------- */
+  .header .menu-toggle {
+    --toggle: #2b2bd0;                 /* CHANGE THIS ONE COLOUR to recolour the whole button */
+    display: flex !important;
+    flex-direction: column;            /* stack the three bars vertically */
+    justify-content: center;
+    align-items: center;
+    gap: 5px;                          /* space between bars */
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    background: #ffffff;
+    border: 2px solid var(--toggle);   /* outline uses the colour above */
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    z-index: 300;                      /* stays above the menu panel */
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* The three bars use the same colour */
+  .header .menu-toggle span {
+    display: block !important;
+    width: 24px;
+    height: 3px;
+    margin: 0;
+    background: var(--toggle) !important;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+  }
+
+  /* HOVER (and keyboard focus): box fills with the colour, bars turn white, button lifts */
+  .header .menu-toggle:hover,
+  .header .menu-toggle:focus-visible {
+    background: var(--toggle);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(43, 43, 208, 0.35);   /* shadow glow: edit the rgb to match your colour */
+  }
+
+  /* OPEN state: the same filled look, so it's clear the menu is on */
+  .header .menu-toggle.open { background: var(--toggle); }
+
+  .header .menu-toggle:hover span,
+  .header .menu-toggle:focus-visible span,
+  .header .menu-toggle.open span {
+    background: #ffffff !important;
+  }
+
+  /* Pressed: shrinks slightly, which also gives feedback on touch screens */
+  .header .menu-toggle:active { transform: scale(0.94); }
+
+  /* Bars turn into an X when open (8px = bar height 3px + gap 5px) */
+  .header .menu-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .header .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .header .menu-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* ---------- MENU PANEL (unchanged from your version) ---------- */
   .header .nav {
-    display: none;                         /* hidden until JavaScript adds "open" */
+    display: none;
     position: absolute !important;
-    top: 83px !important;                  /* just under the 75px header */
+    top: 83px !important;
     left: 12px !important;
     right: 12px !important;
-    bottom: auto !important;               /* stops the panel stretching to the screen bottom */
+    bottom: auto !important;
     width: auto !important;
-    height: auto !important;               /* the panel is only as tall as its links */
+    height: auto !important;
     min-height: 0 !important;
     flex-direction: column !important;
-    justify-content: flex-start !important;/* links start at the top and stack with a small gap */
+    justify-content: flex-start !important;
     align-items: stretch !important;
     gap: 0.5rem !important;
     padding: 1rem !important;
     border-radius: 18px !important;
-    background: rgba(11, 11, 40, 0.94) !important;   /* dark glass: 94% solid so text is always readable */
+    background: rgba(11, 11, 40, 0.94) !important;
     -webkit-backdrop-filter: blur(16px) saturate(160%);
     backdrop-filter: blur(16px) saturate(160%);
     border: 1px solid rgba(255, 255, 255, 0.25) !important;
@@ -198,10 +254,8 @@ h2 { font-size: 2.4rem; margin-bottom: 1rem; }
     z-index: 200;
   }
 
-  /* Shown when JavaScript adds the class "open" */
   .header .nav.open { display: flex !important; }
 
-  /* Each link: a white-text glass pill */
   .header .nav a:not(.btn) {
     display: block !important;
     width: 100% !important;
@@ -215,16 +269,13 @@ h2 { font-size: 2.4rem; margin-bottom: 1rem; }
     opacity: 1 !important;
   }
 
-  /* Remove the desktop blue underline that was showing */
   .header .nav a:not(.btn)::after { display: none !important; content: none !important; }
 
-  /* Current page: blue-tinted pill */
   .header .nav a.active:not(.btn) {
     background: rgba(43, 43, 208, 0.6) !important;
     border-color: rgba(111, 124, 255, 0.8) !important;
   }
 
-  /* Book Now: full-width blue button */
   .header .nav .btn {
     display: block !important;
     width: 100% !important;
